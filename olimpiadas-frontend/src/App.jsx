@@ -1,17 +1,17 @@
 import Header from './components/header/Header'
+import Hero from './components/main/Hero'
 import './App.css'
 
 function App() {
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Header />
+    <div className="min-h-screen bg-slate-50 relative overflow-hidden flex flex-col">
+      <div className="w-full z-10">
+        <Header />
+      </div>
       
-      {/* O resto do conteúdo do site vai entrar aqui depois */}
-      <main className="flex items-center justify-center p-8">
-        <h1 className="text-3xl font-bold text-slate-700">
-          Bem-vindo ao sistema das Olimpíadas!
-        </h1>
+      <main className="flex-grow flex items-center justify-center relative z-10">
+        <Hero />
       </main>
     </div>
   )
