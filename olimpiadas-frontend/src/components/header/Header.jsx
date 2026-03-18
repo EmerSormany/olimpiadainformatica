@@ -29,34 +29,40 @@ export default function Header() {
             transition={{ duration: 0.5 }}
         >
 
-        <Text 
-            fontSize={{ base: "lg", md: "xl" }} 
-            fontWeight="bold" 
-            color="greenOlympcs.600"
-        >
-            1ª Olimpíada Picuiense de Informática
-        </Text>
+            <Text 
+                fontSize={{ base: "lg", md: "xl" }} 
+                fontWeight="bold" 
+                color="greenOlympcs.600"
+            >
+                1ª Olimpíada Picuiense de Informática
+            </Text>
 
-        <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
-            <Button variant="ghost" colorScheme="greenOlympcs">
-                Início
-            </Button>
-            <Button variant="solid" colorScheme="greenOlympcs">
-                Inscrever-se
-            </Button>
-            <Button variant="ghost" colorScheme="gray" isDisabled>
-                Resultados
-            </Button>
-        </HStack>
+            <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
+                <Button variant="ghost" colorScheme="greenOlympcs">
+                    Início
+                </Button>
+                <Button variant="ghost" colorScheme="gray" isDisabled>
+                    Sobre
+                </Button>
+                <Button variant="ghost" colorScheme="gray" isDisabled>
+                    Regulamento
+                </Button>
+                <Button variant="solid" colorScheme="greenOlympcs">
+                    Inscrever-se
+                </Button>
+                <Button variant="ghost" colorScheme="gray" isDisabled>
+                    Resultados
+                </Button>
+            </HStack>
 
-        <IconButton
-            display={{ base: 'flex', md: 'none' }}
-            onClick={onOpen}
-            variant="ghost"
-            colorScheme="greenOlympcs"
-            aria-label="Abrir menu"
-            icon={<HamburgerIcon />}
-        />
+            <IconButton
+                display={{ base: 'flex', md: 'none' }}
+                onClick={onOpen}
+                variant="ghost"
+                colorScheme="greenOlympcs"
+                aria-label="Abrir menu"
+                icon={<HamburgerIcon />}
+            />
 
         </MotionFlex>
 
@@ -69,6 +75,12 @@ export default function Header() {
                 <VStack spacing={6} w="100%">
                 <Button variant="ghost" colorScheme="greenOlympcs" onClick={onClose} w="100%">
                     Início
+                </Button>
+                <Button variant="ghost" colorScheme="gray" isDisabled>
+                    Sobre
+                </Button>
+                <Button variant="ghost" colorScheme="gray" isDisabled>
+                    Regulamento
                 </Button>
                 <Button variant="solid" colorScheme="greenOlympcs" onClick={onClose} w="100%">
                     Inscrever-se
