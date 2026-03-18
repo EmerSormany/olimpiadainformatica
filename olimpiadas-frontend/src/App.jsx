@@ -1,6 +1,7 @@
 import Header from './components/header/Header'
 import Hero from './components/main/Hero'
 import './App.css'
+import Footer from './components/footer/Footer'
 
 function App() {
 
@@ -13,6 +14,8 @@ function App() {
       <main className="flex-grow flex items-center justify-center relative z-10">
         <Hero />
       </main>
+
+      <Footer/>
     </div>
   )
 }
