@@ -1,5 +1,6 @@
 import { Flex, Button, HStack, Text, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerBody, VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom'
 
 // Transformando o Flex do Chakra em um componente animado pelo Framer Motion
 const MotionFlex = motion(Flex);
@@ -13,6 +14,14 @@ const HamburgerIcon = () => (
 export default function Header() {
     
     const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const navigate = useNavigate()
+
+    const handleNavigation = (path) => {
+        navigate(path)
+        onClose()
+    }
+
 
     return (
         <>
@@ -32,22 +41,22 @@ export default function Header() {
             <Text 
                 fontSize={{ base: "lg", md: "xl" }} 
                 fontWeight="bold" 
-                color="greenOlympcs.600"
+                color="greenOlympics.600"
             >
                 1ª Olimpíada Picuiense de Informática
             </Text>
 
             <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
-                <Button variant="ghost" colorScheme="greenOlympcs">
+                <Button variant="ghost" colorScheme="greenOlympics" onClick={() => navigate('/')}>
                     Início
                 </Button>
-                <Button variant="ghost" colorScheme="gray" isDisabled>
+                <Button variant="ghost" colorScheme="greenOlympics" onClick={() => navigate('/about')}>
                     Sobre
                 </Button>
                 <Button variant="ghost" colorScheme="gray" isDisabled>
                     Regulamento
                 </Button>
-                <Button variant="solid" colorScheme="greenOlympcs">
+                <Button variant="solid" colorScheme="greenOlympics">
                     Inscrever-se
                 </Button>
                 <Button variant="ghost" colorScheme="gray" isDisabled>
@@ -59,7 +68,7 @@ export default function Header() {
                 display={{ base: 'flex', md: 'none' }}
                 onClick={onOpen}
                 variant="ghost"
-                colorScheme="greenOlympcs"
+                colorScheme="greenOlympics"
                 aria-label="Abrir menu"
                 icon={<HamburgerIcon />}
             />
@@ -73,16 +82,16 @@ export default function Header() {
             
             <DrawerBody display="flex" flexDirection="column" mt={12}>
                 <VStack spacing={6} w="100%">
-                <Button variant="ghost" colorScheme="greenOlympcs" onClick={onClose} w="100%">
+                <Button variant="ghost" colorScheme="greenOlympics" onClick={() => handleNavigation('/')} w="100%">
                     Início
                 </Button>
-                <Button variant="ghost" colorScheme="gray" isDisabled>
+                <Button variant="ghost" colorScheme="greenOlympics" onClick={() => handleNavigation('/about')}>
                     Sobre
                 </Button>
                 <Button variant="ghost" colorScheme="gray" isDisabled>
                     Regulamento
                 </Button>
-                <Button variant="solid" colorScheme="greenOlympcs" onClick={onClose} w="100%">
+                <Button variant="solid" colorScheme="greenOlympics" onClick={onClose} w="100%">
                     Inscrever-se
                 </Button>
                 <Button variant="ghost" colorScheme="gray" isDisabled w="100%">

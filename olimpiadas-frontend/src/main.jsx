@@ -6,7 +6,7 @@ import App from './App.jsx'
 
 const theme = extendTheme({
   colors: {
-    greenOlympcs: {
+    greenOlympics: {
       50: '#e9f5e8',
       100: '#c7e5c5',
       200: '#a3d5a0',

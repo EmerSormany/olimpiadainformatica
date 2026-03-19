@@ -14,7 +14,7 @@ import {
 export default function Footer() {
   return (
 
-    <Box bg="greenOlympcs.900" color="white" mt="auto" w="100%">
+    <Box bg="greenOlympics.900" color="white" mt="auto" w="100%">
       <Container as={Stack} maxW="1200px" py={10}>
         
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>

@@ -32,12 +32,12 @@ export default function Hero() {
       >
 
         <Box 
-          bg="greenOlympics.100" 
-          p={4} //era 8
+          // bg="greenOlympics.50" 
+          p={5} //era 8
           borderRadius="full" 
           boxShadow="xl"
           border="4px solid" 
-          borderColor="greenOlympics.500"
+          borderColor="greenOlympics.800"
           w={{base:'200px', md: '350px'}}//incluído
           h={{base:'200px', md: '320px'}}//incluído
           display="flex" //incluído
@@ -67,7 +67,6 @@ export default function Hero() {
           color="gray.800"
           lineHeight="1.2"
         >
-          {/* Desafie seus limites na <Text as="span" color="greenOlympics.500">Olimpíada de Informática</Text> */}
           Desafie seus limites na Olimpíada de Informática
         </Heading>
         
@@ -78,7 +77,7 @@ export default function Hero() {
 
         <Button 
           size="lg" 
-          colorScheme="greenOlympcs" 
+          colorScheme="greenOlympics" 
           boxShadow="md"
           _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg' }}
           transition="all 0.2s"
