@@ -3,6 +3,7 @@ import Header from './components/header/Header'
 import Hero from './components/main/Hero'
 import Footer from './components/footer/Footer'
 import About from './pages/About'
+import './App.css'
 
 function App() {
 
