@@ -11,17 +11,18 @@ const HamburgerIcon = () => (
     </svg>
 );
 
+
 export default function Header() {
     
     const { isOpen, onOpen, onClose } = useDisclosure();
-
+    
     const navigate = useNavigate()
-
+    
     const handleNavigation = (path) => {
         navigate(path)
         onClose()
     }
-
+    
 
     return (
         <>
@@ -53,10 +54,10 @@ export default function Header() {
                 <Button variant="ghost" colorScheme="greenOlympics" onClick={() => navigate('/about')}>
                     Sobre
                 </Button>
-                <Button variant="ghost" colorScheme="gray" isDisabled>
+                <Button variant="ghost" colorScheme="greenOlympics" onClick={() => window.open('https://docs.google.com/document/d/1f0qcFkWBfRzbYOfqRF21xJyEqCq1gUAp/edit?usp=sharing&ouid=105055450786899418040&rtpof=true&sd=true')}>
                     Regulamento
                 </Button>
-                <Button variant="solid" colorScheme="greenOlympics">
+                <Button variant="solid" colorScheme="greenOlympics" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfDEyCGZRlMGuAXSZH6gneDd-3BYsISGSSafnkL0L93OSnUNQ/viewform?usp=publish-editor', '_blank')}>
                     Inscrever-se
                 </Button>
                 <Button variant="ghost" colorScheme="gray" isDisabled>

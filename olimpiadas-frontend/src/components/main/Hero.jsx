@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Flex, Box, Heading, Text, Button, VStack, Image, Divider } from '@chakra-ui/react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-// Importação das 3 logos
 import logoOPI from '../../assets/OPI_Preto.png';
 import logoIFPB from '../../assets/logo.ifpb.png';
 import logoTSI from '../../assets/tsi.png';
@@ -10,43 +9,40 @@ import logoTSI from '../../assets/tsi.png';
 const MotionBox = motion(Box);
 
 export default function Hero() {
-  // Estado para controlar a ordem das imagens
-  // 0 = Centro (Destaque), 1 = Direita (Atrás), 2 = Esquerda (Atrás)
   const [positions, setPositions] = useState([0, 1, 2]);
 
   const images = [logoOPI, logoIFPB, logoTSI];
 
-  // Lógica de rotação automática
   useEffect(() => {
     const interval = setInterval(() => {
       setPositions((prev) => {
+
         const next = [...prev];
-        // Rotaciona os índices: o último vai para o começo
         next.unshift(next.pop());
         return next;
+
       });
-    }, 3500); // Troca a cada 3.5 segundos
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
-  // Definição visual de cada posição
   const getVariant = (positionIndex) => {
     const variants = {
-      0: { // CENTRO (Destaque)
+      0: {
         x: 0,
         scale: 1,
         zIndex: 10,
         opacity: 1,
         filter: "blur(0px)",
       },
-      1: { // DIREITA (Atrás)
+      1: {
         x: "60%",
         scale: 0.7,
         zIndex: 5,
         opacity: 0.6,
         filter: "blur(2px)",
       },
-      2: { // ESQUERDA (Atrás)
+      2: {
         x: "-60%",
         scale: 0.7,
         zIndex: 5,
@@ -65,11 +61,9 @@ export default function Hero() {
         align="center"
         justify="space-between"
         gap={{ base: 12, md: 20 }}
-        mb={24} // Aumentei o MB para o carrossel ter espaço
+        mb={24}
       >
-        {/* ==========================================
-            CONTAINER 1: CARROSSEL 3D GIRATÓRIO
-            ========================================== */}
+
         <Box 
           flex={{ base: "none", md: "1" }} 
           position="relative" 
@@ -78,7 +72,6 @@ export default function Hero() {
           display="flex" 
           alignItems="center" 
           justifyContent="center"
-          // Perspective cria o efeito de profundidade 3D
           style={{ perspective: "1000px" }}
         >
           {images.map((img, index) => (
@@ -112,7 +105,6 @@ export default function Hero() {
           ))}
         </Box>
 
-        {/* CONTAINER 2: TEXTO DESCRITIVO */}
         <VStack
           flex={1}
           align={{ base: "center", md: "flex-start" }}
@@ -123,9 +115,9 @@ export default function Hero() {
             Desafie seus limites na <Text as="span" color="greenOlympics.500">Olimpíada de Informática</Text>
           </Heading>
 
-          <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" textAlign={'justify'} fontWeight={700}>
+          <Text fontSize={{ base: "md", md: "lg" }} color="gray.700" textAlign={'justify'} fontWeight={700}>
             Prepare-se para viver a emoção da primeira Olimpíada Picuiense de Informática!
-            Nossas provas foram criadas com o coração, focando nos
+            Nossas provas foram criadas estrategicamente para os
             momentos decisivos de transição acadêmica de cada aluno. É o palco perfeito para você
             testar seu raciocínio lógico, sua capacidade de resolver problemas e todo o seu talento.<br />
             Não fique de fora!
@@ -133,16 +125,14 @@ export default function Hero() {
         </VStack>
       </Flex>
 
-      {/* BLOCO INFERIOR: QUEM PODE PARTICIPAR */}
       <VStack spacing={6} textAlign={'center'} w='100%' maxW={'1200px'} mx={'auto'}>
         <Divider borderColor="greenOlympics.200" maxW={'1000px'} />
         <Heading as={'h2'} size={'xl'} color="greenOlympics.600">QUEM PODE PARTICIPAR</Heading>
         <Text fontSize={'lg'} fontWeight={500} maxW="900px">
-          A competição foi concebida especificamente para estudantes do <strong>9.º ano do Ensino Fundamental</strong> e do <strong>3.º ano do Ensino Médio</strong>. 
+          A competição foi concebida especificamente para estudantes do <strong>9º ano do Ensino Fundamental</strong> e do <strong>3º ano do Ensino Médio</strong>. 
           Ressaltamos que a inscrição é facultada a alunos de outras etapas de ensino, desde que estes estejam cientes de que os conteúdos e 
           critérios avaliativos são nivelados pelos anos supramencionados. É importante considerar que a disparidade de maturidade académica e 
           experiência técnica pode resultar em vantagens competitivas desproporcionais entre os participantes.
-
         </Text>
         <Button
           size="lg"
