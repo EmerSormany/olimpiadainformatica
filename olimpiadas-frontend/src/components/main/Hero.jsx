@@ -140,6 +140,7 @@ export default function Hero() {
           boxShadow="md"
           _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg' }}
           transition="all 0.2s"
+          onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfDEyCGZRlMGuAXSZH6gneDd-3BYsISGSSafnkL0L93OSnUNQ/viewform?usp=publish-editor', '_blank')}
         >
           Quero me Inscrever
         </Button>
