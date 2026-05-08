@@ -1,10 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, ColorModeScript } from "@chakra-ui/react";
 import './index.css'
 import App from './App.jsx'
 
+const config = {
+  initialColorMode: 'light',
+  useSystemColorMode: false
+}
+
 const theme = extendTheme({
+  config,
   colors: {
     greenOlympics: {
       50: '#e9f5e8',
@@ -23,8 +29,11 @@ const theme = extendTheme({
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+
     <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
+
   </StrictMode>,
 )
