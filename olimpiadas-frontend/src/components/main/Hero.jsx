@@ -93,6 +93,7 @@ export default function Hero() {
               alignItems="center"
               justifyContent="center"
               overflow="hidden"
+              bgColor='white'
             >
               <Image 
                 src={img} 
