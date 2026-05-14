@@ -36,7 +36,7 @@ export default function Footer() {
               Organização
             </Heading>
             <Text fontSize="sm" color="gray.300">
-              Alunos do 5º período do curso Tecnologias em Sistemas para Internet do Instituto Federal da Paraíba do campi Picuí.
+              Alunos do 5º período do Curso Superior de Tecnologia em Sistemas para Internet do Instituto Federal da Paraíba – Campus Picuí.
             </Text>
           </Stack>
 
