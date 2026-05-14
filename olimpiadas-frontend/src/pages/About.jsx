@@ -40,20 +40,10 @@ export default function About() {
 
           <Box>
             <Heading as="h2" size="lg" color="greenOlympics.600" mb={3}>
-              O Idealizador e o Sonho
-            </Heading>
-            <Text color="gray.700" lineHeight="tall" textAlign='justify'>
-              O projeto nasce da visão e do entusiasmo do Professor Buriti, que há muito tempo acalentava o desejo de criar uma olimpíada de informática genuinamente picuiense. Para ele, a tecnologia é uma ferramenta de transformação social e intelectual, e fomentar o interesse por essa área desde a escola é o primeiro passo para formar os profissionais e pensadores do futuro.
-            </Text>
-          </Box>
-
-          <Box>
-            <Heading as="h2" size="lg" color="greenOlympics.600" mb={3}>
               Organização e Colaboração
             </Heading>
             <Text color="gray.700" lineHeight="tall" textAlign='justify'>
-              A execução deste evento é fruto de um esforço coletivo e pedagógico. A olimpíada é organizada pela turma do 5º período do curso de Tecnologia em Sistemas para Internet (TSI), sob a orientação direta do Professor Buriti dentro da disciplina ministrada por ele. Essa parceria permite que os acadêmicos de TSI apliquem seus conhecimentos na prática, enquanto proporcionam uma experiência única para os estudantes da educação básica.
-            </Text>
+              A execução deste evento é fruto de um esforço coletivo e pedagógico. A Olimpíada é organizada pela turma do 5º período do Curso Superior de Tecnologia em Sistemas para Internet (TSI), sob a orientação do Professor Antonio Carlos Buriti dentro da disciplina ministrada por ele. Essa parceria permite que os acadêmicos de TSI apliquem seus conhecimentos na prática, enquanto proporcionam uma experiência única para os estudantes da educação básica.            </Text>
           </Box>
 
           <Box w="100%">
