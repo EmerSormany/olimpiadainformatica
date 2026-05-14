@@ -42,27 +42,19 @@ export default function Footer() {
 
           <Stack spacing={2}>
             <Heading as="h4" size="md" color="greenOlympics.300">
-              Professor Orientador
+              Coordenador
             </Heading>
             <Text fontSize="sm" color="gray.300">
-              Prof. Me. Antonio Carlos Buriti da Costa Filho
+              Prof. Antonio Carlos Buriti da Costa Filho
             </Text>
             <Text fontSize="sm" color="gray.300">
               Mestre em Engenharia Elétrica, coordenador do curso de TSI e coordenador do projeto de extensão das Olimpíadas.
             </Text>
-            <Text fontSize="sm" color="greenOlympics.300" as="a" href="mailto:tsi.pc@ifpb.edu.br">
-              tsi.pc@ifpb.edu.br
+            <Text fontSize="sm" color="greenOlympics.300" as="a" href="mailto:ifpbopi@gmail.com">
+              ifpbopi@gmail.com
             </Text>
           </Stack>
         </SimpleGrid>
-
-        <Divider my={2} borderColor="greenOlympics.700" />
-
-        <Box textAlign="center">
-          <Text fontSize="xs" color="gray.400">
-            © {new Date().getFullYear()} Olimpíadas de Informática. Todos os direitos reservados.
-          </Text>
-        </Box>
 
       </Container>
     </Box>
