@@ -10,11 +10,12 @@ import logoTSI from '../../assets/tsi.png';
 const MotionBox = motion(Box);
 
 export default function Hero() {
-  const [positions, setPositions] = useState([0, 1, 2]);
-
-  const images = [logoOPI, logoIFPB, logoTSI];
 
   const navigate = useNavigate()
+  
+  const [positions, setPositions] = useState([0, 1, 2]);
+  const images = [logoOPI, logoIFPB, logoTSI];
+
 
   useEffect(() => {
     const interval = setInterval(() => {

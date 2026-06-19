@@ -81,21 +81,24 @@ export default function Header() {
             
             <DrawerBody display="flex" flexDirection="column" mt={12}>
                 <VStack spacing={6} w="100%">
-                <Button variant="ghost" colorScheme="greenOlympics" onClick={() => navigate('/')} w="100%">
-                    Início
-                </Button>
-                <Button variant="ghost" colorScheme="greenOlympics" onClick={() => navigate('/about')}>
-                    Sobre
-                </Button>
-                <Button variant="ghost" colorScheme="greenOlympics" onClick={() => window.open('https://docs.google.com/document/d/1f0qcFkWBfRzbYOfqRF21xJyEqCq1gUAp/edit?usp=sharing&ouid=105055450786899418040&rtpof=true&sd=true')}>
-                    Regulamento
-                </Button>
-                <Button variant="solid" colorScheme="greenOlympics" onClick={() => navigate('/form')} w="100%">
-                    Inscrever-se
-                </Button>
-                <Button variant="ghost" colorScheme="gray" isDisabled w="100%">
-                    Resultados
-                </Button>
+                    <Button variant="ghost" colorScheme="greenOlympics" onClick={() => navigate('/')} w="100%">
+                        Início
+                    </Button>
+                    <Button variant="ghost" colorScheme="greenOlympics" onClick={() => navigate('/about')}>
+                        Sobre
+                    </Button>
+                    <Button variant="ghost" colorScheme="greenOlympics" onClick={() => window.open('https://docs.google.com/document/d/1f0qcFkWBfRzbYOfqRF21xJyEqCq1gUAp/edit?usp=sharing&ouid=105055450786899418040&rtpof=true&sd=true')}>
+                        Regulamento
+                    </Button>
+                    <Button variant="solid" colorScheme="greenOlympics" onClick={() => navigate('/form')} w="100%">
+                        Inscrever-se
+                    </Button>
+                    <Button variant="ghost" colorScheme="gray" isDisabled w="100%">
+                        Resultados
+                    </Button>
+                    <Button variant='ghost' colorScheme='greenOlympics' onClick={() => navigate('/login')}>
+                        <FiLogIn />
+                    </Button>
                 </VStack>
             </DrawerBody>
             </DrawerContent>
