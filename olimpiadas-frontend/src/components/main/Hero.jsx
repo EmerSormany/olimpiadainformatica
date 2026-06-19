@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Flex, Box, Heading, Text, Button, VStack, Image, Divider } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom'
 
 import logoOPI from '../../assets/OPI_Preto.png';
 import logoIFPB from '../../assets/logo.ifpb.png';
@@ -12,6 +13,8 @@ export default function Hero() {
   const [positions, setPositions] = useState([0, 1, 2]);
 
   const images = [logoOPI, logoIFPB, logoTSI];
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -141,7 +144,7 @@ export default function Hero() {
           boxShadow="md"
           _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg' }}
           transition="all 0.2s"
-          onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfDEyCGZRlMGuAXSZH6gneDd-3BYsISGSSafnkL0L93OSnUNQ/viewform?usp=publish-editor', '_blank')}
+          onClick={() => navigate('/form')}
         >
           Quero me Inscrever
         </Button>

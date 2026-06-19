@@ -4,6 +4,7 @@ import Hero from './components/main/Hero'
 import Footer from './components/footer/Footer'
 import About from './pages/About'
 import './App.css'
+import Form from './pages/Form'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Routes>
               <Route path='/' element={ <Hero/> } />
               <Route path='/about' element={ <About/> } />
+              <Route path='/form' element={ <Form/> } />
           </Routes>
         </main>
 
