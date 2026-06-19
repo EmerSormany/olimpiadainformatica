@@ -1,6 +1,7 @@
 import { Flex, Button, HStack, Text, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerBody, VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
+import { FiLogIn } from "react-icons/fi";
 
 // Transformando o Flex do Chakra em um componente animado pelo Framer Motion
 const MotionFlex = motion(Flex);
@@ -56,6 +57,9 @@ export default function Header() {
                 </Button>
                 <Button variant="ghost" colorScheme="gray" isDisabled>
                     Resultados
+                </Button>
+                <Button variant='ghost' colorScheme='greenOlympics' onClick={() => navigate('/login')}>
+                    <FiLogIn />
                 </Button>
             </HStack>
 
