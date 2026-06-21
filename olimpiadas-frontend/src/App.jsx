@@ -38,7 +38,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-slate-50 relative overflow-hidden flex flex-col">
         <div className="w-full z-10">
-          <Header />
+          <Header session={session} />
         </div>
         
         <main className="flex-grow flex items-center justify-center relative z-10">

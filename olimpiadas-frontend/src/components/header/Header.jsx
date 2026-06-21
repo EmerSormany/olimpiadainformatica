@@ -2,6 +2,8 @@ import { Flex, Button, HStack, Text, IconButton, useDisclosure, Drawer, DrawerOv
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
 import { FiLogIn } from "react-icons/fi";
+import { supabase } from '../../utils/supabase';
+import {Avatar} from '@chakra-ui/react'
 
 // Transformando o Flex do Chakra em um componente animado pelo Framer Motion
 const MotionFlex = motion(Flex);
@@ -12,8 +14,14 @@ const HamburgerIcon = () => (
     </svg>
 );
 
+export default function Header({session}) {
 
-export default function Header() {
+    console.log(session);
+    
+
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+      };
     
     const { isOpen, onOpen, onClose } = useDisclosure();
     
@@ -58,9 +66,14 @@ export default function Header() {
                 <Button variant="ghost" colorScheme="gray" isDisabled>
                     Resultados
                 </Button>
-                <Button variant='ghost' colorScheme='greenOlympics' onClick={() => navigate('/login')}>
-                    <FiLogIn />
-                </Button>
+                {session ? (
+                    <Button variant='ghost' colorScheme='greenOlympics' onClick={handleLogout} title='Logout'>
+                        <Avatar size="sm" src={session.user.user_metadata.avatar_url}  />
+                    </Button> ) : (
+                    <Button variant='ghost' colorScheme='greenOlympics' onClick={() => navigate('/login')} title='Login'>
+                        <FiLogIn />
+                    </Button> )
+                }
             </HStack>
 
             <IconButton
@@ -96,9 +109,14 @@ export default function Header() {
                     <Button variant="ghost" colorScheme="gray" isDisabled w="100%">
                         Resultados
                     </Button>
-                    <Button variant='ghost' colorScheme='greenOlympics' onClick={() => navigate('/login')}>
+                    {session ? (
+                    <Button variant='ghost' colorScheme='greenOlympics' onClick={handleLogout} title='Logout'>
+                        <Avatar size="sm" src={session.user.user_metadata.avatar_url}  />
+                    </Button> ) : (
+                    <Button variant='ghost' colorScheme='greenOlympics' onClick={() => navigate('/login')} title='Login'>
                         <FiLogIn />
-                    </Button>
+                    </Button> )
+                }
                 </VStack>
             </DrawerBody>
             </DrawerContent>
