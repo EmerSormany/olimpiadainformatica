@@ -63,7 +63,6 @@ export const useRegister = () => {
         isClosable: true,
         position: 'top'
       });
-      console.error('Erro no Supabase:', error.message);
     } finally {
       setIsLoading(false);
     }

@@ -3,36 +3,26 @@ import {
   Box, Button, FormControl, FormLabel, Input, VStack, Heading, HStack, Text, Table, Thead, Tbody, Tr, Th, Td, 
   TableContainer, Spinner, Flex
 } from '@chakra-ui/react';
-import { supabase } from '../../utils/supabase';
 import {useNewSchool} from '../../hooks/useNewSchool';
+import {useSearchSchool} from '../../hooks/useSearchSchool';
+import { useDelete } from '../../hooks/useDelete';
+import { TbReload } from "react-icons/tb";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
 
 export default function SchoolsManagement() {
-  const [schools, setSchools] = useState([]);
   const [newSchool, setNewSchool] = useState('');
   const [isLoadingForm, setIsLoadingForm] = useState(false);
-  const [isLoadingTable, setIsLoadingTable] = useState(true);
+
+  const {searchSchool, schools, isLoadingTable} = useSearchSchool();
 
   // Busca as escolas automaticamente assim que o painel é aberto
   useEffect(() => {
-    searchSchool();
-  }, []);
+    searchSchool()
+  }, [searchSchool]);
 
-  const searchSchool = async () => {
-    setIsLoadingTable(true);
-    const { data, error } = await supabase
-      .from('schools')
-      .select('*')
-      .order('name', { ascending: true });
-
-    if (error) {
-      console.error('Erro ao buscar escolas:', error.message);
-    } else if (data) {
-      setSchools(data);
-    }
-    setIsLoadingTable(false);
-  };
-  
-  const {registerNewSchool} = useNewSchool()
+  const {registerNewSchool} = useNewSchool();
+  const { exclude } = useDelete()
 
   const handleNewSchool = async (e) => {
     e.preventDefault();
@@ -99,12 +89,15 @@ export default function SchoolsManagement() {
                 <Thead bg="gray.50">
                   <Tr>
                     <Th py={4}>Instituições Cadastradas ({schools.length})</Th>
+                    <Th textAlign={'right'}>
+                     <Button size='md' colorScheme='greenOlympics' onClick={searchSchool} title='Atualizar Escolas'><TbReload /></Button>
+                    </Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {schools.length === 0 ? (
                     <Tr>
-                      <Td color="gray.400" textAlign="center" py={6}>
+                      <Td colSpan={2} color="gray.400" textAlign="center" py={6}>
                         Nenhuma escola cadastrada ainda.
                       </Td>
                     </Tr>
@@ -112,7 +105,16 @@ export default function SchoolsManagement() {
                     schools.map((school) => (
                       <Tr key={school.id} _hover={{ bg: 'gray.50' }}>
                         <Td py={3} fontWeight="medium" color="gray.700">
-                          {school.name}
+                          {school.name} 
+                        </Td>
+                        <Td>
+                          <HStack spacing={2} justify='flex-end'>
+                            <Button size={'xs'} colorScheme='yellow' variant={'outline'} title='Editar Escola'><FaRegEdit /></Button>
+                            <Button size={'xs'} colorScheme='red' variant={'outline'} title='Deletar Escola' onClick={() => {
+                              exclude(school.id) 
+                              searchSchool()
+                              }}><MdDeleteOutline /></Button>
+                          </HStack>
                         </Td>
                       </Tr>
                     ))

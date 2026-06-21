@@ -12,8 +12,6 @@ export const useNewSchool = () => {
         .insert([{ name: newSchool.trim() }]);
 
         if (error) {
-            console.log(error);
-            
             toast({
                 title: 'Erro ao cadastrar',
                 description: 'Verifique se o nome já existe ou tente novamente.',

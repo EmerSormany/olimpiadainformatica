@@ -15,10 +15,6 @@ const HamburgerIcon = () => (
 );
 
 export default function Header({session}) {
-
-    console.log(session);
-    
-
     const handleLogout = async () => {
         await supabase.auth.signOut();
       };
