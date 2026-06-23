@@ -1,62 +1,11 @@
-import { Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td, VStack, Heading, Flex, Spinner, HStack, Button, Tooltip,
-    Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverBody, 
-  PopoverArrow, PopoverCloseButton, Input,
-  useToast
+import { Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td, VStack, Heading, Flex, Spinner, HStack, Button, Tooltip, useToast
 } from "@chakra-ui/react"
-import { useEffect , useState} from "react";
+import { useEffect} from "react";
 import {useSearchRegistereds} from '../../hooks/useSearchRegisters';
 import { usePutGrade } from "../../hooks/usePutGrade";
 import { TbReload } from "react-icons/tb";
 import { useDelete } from '../../hooks/useDelete';
-
-// Sub-componente exclusivo para gerenciar o mini modal de cada linha
-const GradePopover = ({ registered, onSaveGrade }) => {
-  const [grade, setGrade] = useState('');
-
-  const handleSubmit = () => {
-    onSaveGrade(grade, registered.id);
-    setGrade('');
-  };
-
-  return (
-    // isLazy garante que o HTML oculto não pese na memória do navegador
-    <Popover placement="left" isLazy>
-      
-      {/* O gatilho que abre o Popover (O seu botão amarelo original) */}
-      <PopoverTrigger>
-            <Button size={'xs'} colorScheme='orange'>Nota</Button>
-      </PopoverTrigger>
-
-      {/* O balão do Popover */}
-      <PopoverContent w="220px" boxShadow="lg" _focus={{ outline: 'none' }}>
-        <PopoverArrow />
-        <PopoverCloseButton />
-        <PopoverHeader fontWeight="bold" fontSize="xs" color="gray.600">
-          Atribuir nota para {registered.name.split(' ')[0]}
-        </PopoverHeader>
-        
-        <PopoverBody>
-          <HStack>
-            <Input 
-              size="sm" 
-              type="number" 
-              min={0} 
-              max={100} 
-              placeholder="0 a 100" 
-              value={grade}
-              onChange={(e) => setGrade(e.target.value)}
-              focusBorderColor="greenOlympics.500"
-            />
-            <Button size="sm" colorScheme="greenOlympics" onClick={handleSubmit}>
-              Salvar
-            </Button>
-          </HStack>
-        </PopoverBody>
-      </PopoverContent>
-      
-    </Popover>
-  );
-};
+import GradePopover from "../modals/GradePopover";
 
 
 export default function RegisteredManagement() {
@@ -137,7 +86,7 @@ export default function RegisteredManagement() {
                                         <Td py={3} px={2} fontWeight="medium" color="gray.700" whiteSpace="normal">
                                             <HStack>
                                                 <Tooltip label='Excluir Inscrito'>
-                                                    <Button size={'xs'} colorScheme='red' onClick={() => handleDelete('registered', registered.id)}>Del</Button>
+                                                    <Button size={'xs'} colorScheme='red' onClick={() => handleDelete('participants', registered.id)}>Del</Button>
                                                 </Tooltip>
                                                 <div>
                                                     {registered.name} 

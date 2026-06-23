@@ -6,7 +6,7 @@ export const formSchema = z.object({
   name: z.string().min(7, 'O nome completo é obrigatório.'),
   cpf: z.string().min(11, 'O CPF é obrigatório.').refine(val => cpf.isValid(val), {message: 'CPF inválido ou inexistente!'}),
 
-  id_school: z.string().min(2, 'O nome da escola é obrigatório.'), // corrigir com escolas cadastradas
+  id_school: z.string().min(1, 'O nome da escola é obrigatório.'), // corrigir com escolas cadastradas
 
   school_year: z.string().refine(val => ['9_fundamental', '3_medio'].includes(val), { 
     message: 'Selecione uma série válida.' 

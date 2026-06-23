@@ -12,7 +12,7 @@ export const useSearchRegistereds = () => {
         setIsLoadingTable(true)
 
         const { error, data} = await supabase
-            .from('registered')
+            .from('participants')
             .select('*, schools(name)')
             .order('name', {ascending: true})
 

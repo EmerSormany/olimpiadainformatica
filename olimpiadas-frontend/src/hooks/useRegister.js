@@ -12,7 +12,7 @@ export const useRegister = () => {
     try {
       // Envio dos dados estruturados para a tabela 'inscritos'
       const { error } = await supabase
-        .from('registered')
+        .from('participants')
         .insert([
           {
             name: formData.name,

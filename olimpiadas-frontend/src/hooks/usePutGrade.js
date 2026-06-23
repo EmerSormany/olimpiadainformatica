@@ -6,7 +6,7 @@ import { supabase } from "../utils/supabase"
 export const usePutGrade = () => {
     const toast = useToast()
     const putGrade = async (grade, id) => {
-        const { error } = await supabase.from('registered').update({grade}).eq('id', id)
+        const { error } = await supabase.from('participants').update({grade}).eq('id', id)
         if (error) {
             toast({
                 title: 'Erro ao Incluir Nota',
