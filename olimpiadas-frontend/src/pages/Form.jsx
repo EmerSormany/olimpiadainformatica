@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box, Button, Container, FormControl, FormLabel, Input, Select,
   VStack, Heading, Text, FormErrorMessage, Divider
@@ -6,17 +6,24 @@ import {
 import { motion } from 'framer-motion';
 import { maskCPF, maskPhone , formSchema} from '../utils/masks';
 import { useRegister } from '../hooks/useRegister';
+import { useSearchSchool } from '../hooks/useSearchSchool'; 
 
 const MotionContainer = motion(Container);
 
 export default function Form() {
 
   const [formData, setFormData] = useState({
-    name: '', cpf: '', escola: '', school_year: '', phone: '', email: ''
+    name: '', cpf: '', id_school: '', school_year: '', phone: '', email: ''
   });
   const [errors, setErrors] = useState({});
 
   const {registerParticipant, isLoading} = useRegister();
+
+  const {searchSchool, schools} = useSearchSchool()
+
+  useEffect( () => {
+    searchSchool()
+  }, [searchSchool])
 
   // Manipulador de mudanças muito mais limpo
   const handleChange = (e) => {
@@ -49,8 +56,10 @@ export default function Form() {
       return;
     }
 
+    
+
     await registerParticipant(formData), () => {
-      setFormData({name: '', cpf: '', school_year: '', phone: '', email: ''})
+      setFormData({name: '', cpf: '', school_year: '', phone: '', email: '', id_school: ''})
     }
   };
 
@@ -86,13 +95,28 @@ export default function Form() {
             <FormErrorMessage>{errors.cpf}</FormErrorMessage>
           </FormControl>
 
-          <FormControl  isInvalid={!!errors.escola}>
+          <FormControl  isInvalid={!!errors.school}>
             <FormLabel fontWeight="bold" color="gray.700">Escola em que estuda</FormLabel>
-            <Input name="escola" value={formData.escola} onChange={handleChange} focusBorderColor="greenOlympics.500" />
-            <FormErrorMessage>{errors.escola}</FormErrorMessage>
+
+            <Select
+              name='id_school'
+              value={formData.id_school}
+              onChange={handleChange}
+              focusBorderColor='greenOlympics.500'
+              placeholder='Selecione sua escola...'
+              >
+                {
+                  schools.map((school) => (                    
+                    <option key={school.id} value={school.id}>
+                      {school.name}
+                    </option>
+                  ))
+                }
+            </Select>
+            <FormErrorMessage>{errors.id_school}</FormErrorMessage>
           </FormControl>
 
-          <FormControl  isInvalid={!!errors.sschool_yearerie}>
+          <FormControl  isInvalid={!!errors.school_year}>
             <FormLabel fontWeight="bold" color="gray.700">Série</FormLabel>
             <Select name="school_year" value={formData.school_year} onChange={handleChange} placeholder="Selecione sua série atual" focusBorderColor="greenOlympics.500">
               <option value="9_fundamental">9º ano do Ensino Fundamental</option>

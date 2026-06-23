@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
   Box, Button, FormControl, FormLabel, Input, VStack, Heading, HStack, Text, Table, Thead, Tbody, Tr, Th, Td, 
-  TableContainer, Spinner, Flex, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton
-} from '@chakra-ui/react';
+  TableContainer, Spinner, Flex, useDisclosure} from '@chakra-ui/react';
 import {useNewSchool} from '../../hooks/useNewSchool';
 import {useSearchSchool} from '../../hooks/useSearchSchool';
 import { useDelete } from '../../hooks/useDelete';
@@ -20,6 +19,7 @@ export default function SchoolsManagement() {
   const [ editadedName, setEditadedName ] = useState('')
 
   const {searchSchool, schools, isLoadingTable} = useSearchSchool();
+  
   const {registerNewSchool} = useNewSchool();
   const { exclude } = useDelete()
   
@@ -59,13 +59,10 @@ export default function SchoolsManagement() {
     <Box bg="white" p={6} borderRadius="xl" boxShadow="sm" w="100%">
       <VStack spacing={6} align="stretch">
         
-        <Box borderBottom="1px solid" borderColor="gray.100" pb={4}>
+        <Box borderBottom="1px solid" borderColor="gray.100" pb={4} textAlign={'center'}>
           <Heading as="h2" size="md" color="greenOlympics.600">
             Gerenciamento de Escolas
           </Heading>
-          <Text color="gray.500" fontSize="sm">
-            Cadastre as instituições de ensino que participarão da Olimpíada.
-          </Text>
         </Box>
 
         {/* Formulário de Cadastro */}

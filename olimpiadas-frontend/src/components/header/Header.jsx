@@ -1,4 +1,4 @@
-import { Flex, Button, HStack, Text, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerBody, VStack } from '@chakra-ui/react';
+import { Flex, Button, HStack, Text, IconButton, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerBody, VStack, Tooltip} from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
 import { FiLogIn } from "react-icons/fi";
@@ -63,12 +63,24 @@ export default function Header({session}) {
                     Resultados
                 </Button>
                 {session ? (
-                    <Button variant='ghost' colorScheme='greenOlympics' onClick={handleLogout} title='Logout'>
-                        <Avatar size="sm" src={session.user.user_metadata.avatar_url}  />
-                    </Button> ) : (
-                    <Button variant='ghost' colorScheme='greenOlympics' onClick={() => navigate('/login')} title='Login'>
-                        <FiLogIn />
-                    </Button> )
+                    <Tooltip label='Painel do Administrador'>
+                        <Button variant={'ghost'} colorScheme='greenOlympics' onClick={() => navigate('/admin')}>Painel</Button>
+                    </Tooltip>
+                ) : (null)
+                } 
+                {session ? (
+                    <Tooltip label='Logout'>
+                        <Button variant='ghost' colorScheme='greenOlympics' onClick={handleLogout}>
+                            <Avatar size="sm" src={session.user.user_metadata.avatar_url}  />
+                        </Button> 
+                    </Tooltip>
+                    ) : (
+                    <Tooltip label='Login'>
+                        <Button variant='ghost' colorScheme='greenOlympics' onClick={() => navigate('/login')}>
+                            <FiLogIn />
+                        </Button> 
+                    </Tooltip>
+                    )
                 }
             </HStack>
 

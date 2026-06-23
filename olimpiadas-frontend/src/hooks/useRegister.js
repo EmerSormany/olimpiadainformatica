@@ -8,7 +8,7 @@ export const useRegister = () => {
   
   const registerParticipant = async (formData, onSucess) => {
     setIsLoading(true)
-    
+
     try {
       // Envio dos dados estruturados para a tabela 'inscritos'
       const { error } = await supabase
@@ -17,7 +17,7 @@ export const useRegister = () => {
           {
             name: formData.name,
             cpf: formData.cpf,
-            // escola: formData.escola,
+            id_school: formData.id_school,
             school_year: formData.school_year,
             phone: formData.phone,
             email: formData.email,
