@@ -5,12 +5,17 @@ export const useDelete = () => {
 
     const toast = useToast()
 
-    const exclude = async (id) => {
-        const {error} = await supabase.from('schools').delete().eq('id', id).select();
-        
+    const exclude = async (table, id) => {
+        const {error, data} = await supabase.from(table).delete().eq('id', id).select();
+
+        let deleted = `Inscrito ${data[0].name} excluído`
+        if (table === 'schools') {
+            deleted = `Escola ${data[0].name} excluída.`
+        }
+
         if (error) {
             toast({
-                title: 'Erro ao Excluir Escola',
+                title: `Erro ao Excluir`,
                 description: 'Ocorreu um erro inexperado ao realizar a exclusão.',
                 status: 'error',
                 duration: 5000,
@@ -18,8 +23,8 @@ export const useDelete = () => {
             })
         } else {
             toast({
-                title: 'Escola Excluída!',
-                description: `A escola foi excluída com sucesso.`,
+                title: `Sucesso!`,
+                description: `${deleted}`,
                 status: 'success',
                 duration: 3000,
                 isClosable: true,

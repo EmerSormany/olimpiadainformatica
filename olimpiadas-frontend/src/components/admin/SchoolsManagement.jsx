@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
-  Box, Button, FormControl, FormLabel, Input, VStack, Heading, HStack, Text, Table, Thead, Tbody, Tr, Th, Td, 
+  Box, Button, FormControl, FormLabel, Input, VStack, Heading, HStack, Table, Thead, Tbody, Tr, Th, Td, 
   TableContainer, Spinner, Flex, useDisclosure, Tooltip} from '@chakra-ui/react';
 import {useNewSchool} from '../../hooks/useNewSchool';
 import {useSearchSchool} from '../../hooks/useSearchSchool';
@@ -28,9 +28,9 @@ export default function SchoolsManagement() {
     searchSchool()
   }, [searchSchool]);
   
-  const handleDelete = async (id) => {
+  const handleDelete = async (table, id) => {
     if (window.confirm('Deseja realmente excluir a escola?')) {
-      await exclude(id) 
+      await exclude(table , id) 
       await searchSchool()
     }
   }
@@ -129,7 +129,7 @@ export default function SchoolsManagement() {
                               <Button size={'xs'} colorScheme='orange' onClick={() => modalOpen(school)}><FaRegEdit /></Button>
                             </Tooltip>
                             <Tooltip label='Deletar Escola'>
-                              <Button size={'xs'} colorScheme='red' onClick={() => handleDelete(school.id)}><MdDeleteOutline /></Button>
+                              <Button size={'xs'} colorScheme='red' onClick={() => handleDelete('schools' , school.id)}><MdDeleteOutline /></Button>
                             </Tooltip>
                           </HStack>
                         </Td>

@@ -7,6 +7,7 @@ import { useEffect , useState} from "react";
 import {useSearchRegistereds} from '../../hooks/useSearchRegisters';
 import { usePutGrade } from "../../hooks/usePutGrade";
 import { TbReload } from "react-icons/tb";
+import { useDelete } from '../../hooks/useDelete';
 
 // Sub-componente exclusivo para gerenciar o mini modal de cada linha
 const GradePopover = ({ registered, onSaveGrade }) => {
@@ -63,6 +64,7 @@ export default function RegisteredManagement() {
     const {searchRegistereds, isLoadingTable, registereds} = useSearchRegistereds()
     const { putGrade } = usePutGrade()
     const toast = useToast()
+    const {exclude} = useDelete()
 
     useEffect(() => {
         searchRegistereds();
@@ -82,6 +84,12 @@ export default function RegisteredManagement() {
         }
     }
 
+    const handleDelete = async (table, id) => {
+        if (window.confirm('Deseja realmente excluir o inscrito?')) {
+            await exclude(table , id) 
+            await searchRegistereds()
+        }
+    }
 
     return (
         <Box bg="white" p={6} borderRadius="xl" boxShadow="sm" w="100%">
@@ -127,8 +135,14 @@ export default function RegisteredManagement() {
                                     registereds.map((registered) => (
                                     <Tr key={registered.id} _hover={{ bg: 'gray.50' }}>
                                         <Td py={3} px={2} fontWeight="medium" color="gray.700" whiteSpace="normal">
-
-                                            {registered.name} 
+                                            <HStack>
+                                                <Tooltip label='Excluir Inscrito'>
+                                                    <Button size={'xs'} colorScheme='red' onClick={() => handleDelete('registered', registered.id)}>Del</Button>
+                                                </Tooltip>
+                                                <div>
+                                                    {registered.name} 
+                                                </div>
+                                            </HStack>
                                         </Td>
                                         <Td py={3} px={2} fontWeight="medium" color="gray.700">
                                             {registered.cpf}
@@ -146,7 +160,7 @@ export default function RegisteredManagement() {
                                             {registered.grade || 'Sem Nota'}
                                         </Td>
                                         <Td py={3} px={2} fontWeight="medium" color="gray.700" whiteSpace="normal">
-                                            {registered.schools.name || 'Sem escola'}
+                                            {registered.schools?.name || 'Sem escola'}
                                         </Td>
                                         <Td py={3} px={2} fontWeight="medium" color="gray.700">
                                             <HStack spacing={2} justify='center'>
