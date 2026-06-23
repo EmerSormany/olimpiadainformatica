@@ -126,10 +126,10 @@ export default function SchoolsManagement() {
                         <Td>
                           <HStack spacing={2} justify='flex-end'>
                             <Tooltip label='Editar Escola'>
-                              <Button size={'xs'} colorScheme='yellow' variant={'outline'} onClick={() => modalOpen(school)}><FaRegEdit /></Button>
+                              <Button size={'xs'} colorScheme='orange' onClick={() => modalOpen(school)}><FaRegEdit /></Button>
                             </Tooltip>
                             <Tooltip label='Deletar Escola'>
-                              <Button size={'xs'} colorScheme='red' variant={'outline'} onClick={() => handleDelete(school.id)}><MdDeleteOutline /></Button>
+                              <Button size={'xs'} colorScheme='red' onClick={() => handleDelete(school.id)}><MdDeleteOutline /></Button>
                             </Tooltip>
                           </HStack>
                         </Td>

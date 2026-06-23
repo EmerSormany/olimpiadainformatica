@@ -5,6 +5,7 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { maskCPF, maskPhone , formSchema} from '../utils/masks';
+import { formatName } from '../utils/formatName';
 import { useRegister } from '../hooks/useRegister';
 import { useSearchSchool } from '../hooks/useSearchSchool'; 
 
@@ -32,6 +33,7 @@ export default function Form() {
 
     if (name === 'cpf') formattedValue = maskCPF(value);
     if (name === 'phone') formattedValue = maskPhone(value);
+    if (name === 'name') formattedValue = formatName(value);
 
     setFormData(prev => ({ ...prev, [name]: formattedValue }));
     

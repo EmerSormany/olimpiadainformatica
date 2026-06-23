@@ -23,7 +23,7 @@ const GradePopover = ({ registered, onSaveGrade }) => {
       
       {/* O gatilho que abre o Popover (O seu botão amarelo original) */}
       <PopoverTrigger>
-            <Button size={'xs'} colorScheme='yellow' variant={'outline'}>Nota</Button>
+            <Button size={'xs'} colorScheme='orange'>Nota</Button>
       </PopoverTrigger>
 
       {/* O balão do Popover */}
@@ -127,6 +127,7 @@ export default function RegisteredManagement() {
                                     registereds.map((registered) => (
                                     <Tr key={registered.id} _hover={{ bg: 'gray.50' }}>
                                         <Td py={3} px={2} fontWeight="medium" color="gray.700" whiteSpace="normal">
+
                                             {registered.name} 
                                         </Td>
                                         <Td py={3} px={2} fontWeight="medium" color="gray.700">
