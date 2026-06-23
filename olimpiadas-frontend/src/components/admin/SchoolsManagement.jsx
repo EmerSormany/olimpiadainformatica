@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
   Box, Button, FormControl, FormLabel, Input, VStack, Heading, HStack, Text, Table, Thead, Tbody, Tr, Th, Td, 
-  TableContainer, Spinner, Flex, useDisclosure} from '@chakra-ui/react';
+  TableContainer, Spinner, Flex, useDisclosure, Tooltip} from '@chakra-ui/react';
 import {useNewSchool} from '../../hooks/useNewSchool';
 import {useSearchSchool} from '../../hooks/useSearchSchool';
 import { useDelete } from '../../hooks/useDelete';
@@ -19,7 +19,7 @@ export default function SchoolsManagement() {
   const [ editadedName, setEditadedName ] = useState('')
 
   const {searchSchool, schools, isLoadingTable} = useSearchSchool();
-  
+
   const {registerNewSchool} = useNewSchool();
   const { exclude } = useDelete()
   
@@ -104,7 +104,9 @@ export default function SchoolsManagement() {
                   <Tr>
                     <Th py={4}>Instituições Cadastradas ({schools.length})</Th>
                     <Th textAlign={'right'}>
-                     <Button size='md' colorScheme='greenOlympics' onClick={searchSchool} title='Atualizar Escolas'><TbReload /></Button>
+                      <Tooltip label='Recarregar Escolas'>
+                        <Button size='md' colorScheme='greenOlympics' onClick={searchSchool}><TbReload /></Button>
+                      </Tooltip>
                     </Th>
                   </Tr>
                 </Thead>
@@ -123,8 +125,12 @@ export default function SchoolsManagement() {
                         </Td>
                         <Td>
                           <HStack spacing={2} justify='flex-end'>
-                            <Button size={'xs'} colorScheme='yellow' variant={'outline'} title='Editar Escola' onClick={() => modalOpen(school)}><FaRegEdit /></Button>
-                            <Button size={'xs'} colorScheme='red' variant={'outline'} title='Deletar Escola' onClick={() => handleDelete(school.id)}><MdDeleteOutline /></Button>
+                            <Tooltip label='Editar Escola'>
+                              <Button size={'xs'} colorScheme='yellow' variant={'outline'} onClick={() => modalOpen(school)}><FaRegEdit /></Button>
+                            </Tooltip>
+                            <Tooltip label='Deletar Escola'>
+                              <Button size={'xs'} colorScheme='red' variant={'outline'} onClick={() => handleDelete(school.id)}><MdDeleteOutline /></Button>
+                            </Tooltip>
                           </HStack>
                         </Td>
                       </Tr>
