@@ -35,7 +35,7 @@ function App() {
 
   return (
 
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen bg-slate-50 relative overflow-hidden flex flex-col">
         <div className="w-full z-10">
           <Header session={session} />
