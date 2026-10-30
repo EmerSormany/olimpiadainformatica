@@ -3,10 +3,11 @@ import { Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td, VStack, Heading, 
 import { useEffect, useState} from "react";
 import {useSearchRegistereds} from '../../hooks/useSearchRegisters';
 import { usePutGrade } from "../../hooks/usePutGrade";
-import { TbReload } from "react-icons/tb";
+import { TbReload, TbCertificate } from "react-icons/tb";
 import { useDelete } from '../../hooks/useDelete';
 import GradePopover from "../modals/GradePopover";
 import { LuSearch } from "react-icons/lu";
+import { supabase } from "../../utils/supabase"; // refatorar
 
 
 export default function RegisteredManagement() {
@@ -41,6 +42,39 @@ export default function RegisteredManagement() {
         if (window.confirm('Deseja realmente excluir o inscrito?')) {
             await exclude(table , id) 
             await searchRegistereds()
+        }
+    }
+
+    const handleSendCertificates = async () => {
+        // Confirmação de segurança
+        if (!window.confirm("Deseja iniciar o envio dos certificados para os alunos aprovados?")) return;
+
+        // Define qual a nota mínima de aprovação (ex: 60)
+        const MINIMUM_GRADE = 0;
+
+        toast({ 
+            title: 'Iniciando envios...', 
+            description: 'Os certificados estão sendo processados.', 
+            status: 'info',
+            duration: 4000
+        });
+        
+
+        // Esse único comando atualiza milhares de linhas de uma vez, 
+        // ativando a função apenas para quem tirar a nota necessária e não recebeu ainda.
+        const { error } = await supabase
+            .from('participants')
+            .update({ certificate_status: 'processando' })
+            .gte('grade', MINIMUM_GRADE) // Maior ou igual a nota de corte
+            .eq('certificate_status', 'pendente'); // Apenas os que ainda não foram enviados
+
+        if (error) {
+            toast({ title: 'Erro ao iniciar envios', status: 'error' });
+            console.error(error);
+        } else {
+            toast({ title: 'Sucesso!', description: 'Fila de certificados criada.', status: 'success' });
+            // Recarrega a tabela para mostrar o status "processando" na tela
+            searchRegistereds(); 
         }
     }
 
@@ -92,17 +126,22 @@ export default function RegisteredManagement() {
                                     <Th py={4} px={2} width={'16%'}>E-mail</Th>
                                     <Th py={4} px={2} width={'6%'}>Nota</Th>
                                     <Th py={4} px={2} width={'15%'}>Escola</Th>
-                                    <Th py={4} px={2} width={'4%'} >
-                                        <Tooltip label='Recarregar Inscritos'>
-                                            <Button size='sm' colorScheme='greenOlympics' onClick={searchRegistereds}><TbReload /></Button>
-                                        </Tooltip>
+                                    <Th py={4} px={2} width={'8%'} >
+                                        <HStack>
+                                            <Tooltip label='Enviar Certificados'>
+                                                <Button size='sm' colorScheme='greenOlympics' onClick={handleSendCertificates}><TbCertificate /></Button>
+                                            </Tooltip>
+                                            <Tooltip label='Recarregar Inscritos'>
+                                                <Button size='sm' colorScheme='greenOlympics' onClick={searchRegistereds}><TbReload /></Button>
+                                            </Tooltip>
+                                        </HStack>
                                     </Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
                                 {filteredParticipants.length === 0 ? (
                                 <Tr>
-                                    <Td colSpan={2} color="gray.400" textAlign="center" py={6}>
+                                    <Td colSpan={8} color="gray.400" textAlign="center" py={6}>
                                         {searchTerm ? 'Nenhum aluno encontrado com esse nome.' : 'Nenhum inscrito até o momento.'}
                                     </Td>
                                 </Tr>
