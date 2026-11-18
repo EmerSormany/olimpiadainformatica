@@ -121,10 +121,8 @@ export default function Hero() {
           </Heading>
 
           <Text fontSize={{ base: "md", md: "lg" }} color="gray.700" textAlign={'justify'} fontWeight={700}>
-            Prepare-se para viver a emoção da primeira Olimpíada Picuiense de Informática!
-            Nossas provas foram criadas estrategicamente para os
-            momentos decisivos de transição acadêmica de cada aluno. É o palco perfeito para você
-            testar seu raciocínio lógico, sua capacidade de resolver problemas e todo o seu talento.<br />
+            Prepare-se para viver a emoção da 1ª Olimpíada Picuiense de Informática (OPI). 
+            É o palco perfeito para você testar seu raciocínio lógico, sua capacidade de resolver problemas e todo o seu talento.<br />
             Não fique de fora!
           </Text>
         </VStack>
@@ -134,10 +132,7 @@ export default function Hero() {
         <Divider borderColor="greenOlympics.200" maxW={'1000px'} />
         <Heading as={'h2'} size={'xl'} color="greenOlympics.600">QUEM PODE PARTICIPAR</Heading>
         <Text fontSize={'lg'} fontWeight={500} maxW="900px">
-          A competição foi concebida especificamente para estudantes do <strong>9º ano do Ensino Fundamental</strong> e do <strong>3º ano do Ensino Médio</strong>. 
-          Ressaltamos que a inscrição é facultada a alunos de outras etapas de ensino, desde que estes estejam cientes de que os conteúdos e 
-          critérios avaliativos são nivelados pelos anos supramencionados. É importante considerar que a disparidade de maturidade académica e 
-          experiência técnica pode resultar em vantagens competitivas desproporcionais entre os participantes.
+          Podem participar estudantes de escolas de Picuí-PB e municípios vizinhos matriculados no <strong>9º ano do Ensino Fundamental</strong> ou no <strong>3º ano do Ensino Médio</strong>.
         </Text>
         <Button
           size="lg"

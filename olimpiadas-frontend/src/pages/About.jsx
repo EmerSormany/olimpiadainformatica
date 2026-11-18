@@ -40,10 +40,11 @@ export default function About() {
 
           <Box>
             <Heading as="h2" size="lg" color="greenOlympics.600" mb={3}>
-              Organização e Colaboração
+              Organização
             </Heading>
             <Text color="gray.700" lineHeight="tall" textAlign='justify'>
-              A execução deste evento é fruto de um esforço coletivo e pedagógico. A Olimpíada é organizada pela turma do 5º período do Curso Superior de Tecnologia em Sistemas para Internet (TSI), sob a orientação do Professor Antonio Carlos Buriti dentro da disciplina ministrada por ele. Essa parceria permite que os acadêmicos de TSI apliquem seus conhecimentos na prática, enquanto proporcionam uma experiência única para os estudantes da educação básica.            </Text>
+              A 1ª Olimpíada Picuiense de Informática (OPI) é fruto de um esforço coletivo. A organização é responsabilidade de alunos do curso superior de Tecnologia em Sistemas para Internet (TSI) do Instituto Federal da Paraíba (IFPB/Campus Picuí), sob a orientação do Professor Antonio Carlos Buriti da Costa Filho. Essa parceria permite que acadêmicos de TSI apliquem seus conhecimentos na prática, enquanto proporcionam uma experiência única para os estudantes do Seridó e do Curimataú.            
+            </Text>
           </Box>
 
           <Box w="100%">
@@ -51,14 +52,14 @@ export default function About() {
               Quem Pode Participar?
             </Heading>
             <Text color="gray.700" mb={3} textAlign='justify'>
-              Focada em momentos cruciais de transição acadêmica, a competição é voltada para dois grupos específicos:
+              Focada em momentos cruciais de transição acadêmica, a competição é voltada para dois níveis:
             </Text>
-            <UnorderedList spacing={2} pl={5} color="gray.700" fontWeight="bold">
+            <UnorderedList spacing={2} pl={5} color="gray.700" fontWeight="normal">
               <ListItem>Ensino Fundamental: Alunos do 9º ano.</ListItem>
               <ListItem>Ensino Médio: Alunos do 3º ano.</ListItem>
             </UnorderedList>
             <Text color="gray.700" mt={3} lineHeight="tall" textAlign='justify'>
-              As provas são elaboradas para desafiar o raciocínio lógico, a capacidade de resolução de problemas e o conhecimento técnico dos participantes, respeitando o nível de ensino de cada categoria.
+              As provas são elaboradas para desafiar o raciocínio lógico, a capacidade de resolução de problemas e o conhecimento técnico dos participantes, respeitando o nível de ensino de cada estudante.
             </Text>
           </Box>
 
@@ -71,10 +72,10 @@ export default function About() {
             </Text>
             <UnorderedList spacing={3} pl={5} color="gray.700" textAlign='justify'>
               <ListItem>
-                Todos os <strong>participantes</strong> inscritos que realizarem a prova receberão um certificado de participação, reconhecendo sua dedicação e engajamento.
+                Todos os participantes inscritos que realizarem a prova receberão um certificado de participação, reconhecendo sua dedicação e engajamento. Os certificados serão disponibilizados aqui mesmo no sítio oficial da OPI.
               </ListItem>
               <ListItem>
-                Os <strong>vencedores</strong> de cada modalidade serão condecorados com o título de vencedor e um certificado especial de mérito, celebrando sua excelência e destaque na competição.
+                Para cada nível de prova (Fundamental e Médio) haverá classificação em quatro categorias ordenadas por nota em ordem decrescente: ouro, prata, bronze e menção honrosa.
               </ListItem>
             </UnorderedList>
           </Box>
@@ -82,7 +83,7 @@ export default function About() {
           <Box bg="greenOlympics.50" p={6} borderRadius="lg" w="100%" textAlign="center" borderLeft="4px solid" borderColor="greenOlympics.600">
             <Text fontSize="lg" color="greenOlympics.800" fontWeight="bold">
               Junte-se a nós nesta jornada de bits, lógica e muita descoberta.<br />
-              A Olimpíada Picuiense de Informática espera por você!
+              A 1ª Olimpíada Picuiense de Informática espera por você!
             </Text>
           </Box>
 

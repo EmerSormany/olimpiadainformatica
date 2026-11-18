@@ -79,7 +79,8 @@ export default function Form() {
               Inscrição
             </Heading>
             <Text color="gray.600">
-              Preencha o formulário abaixo para garantir sua participação.
+              Preencha o formulário abaixo para garantir sua participação. <br />
+              Caso sua escola não esteja na lista, entre em contato conosco no email <strong>opi.pc@ifpb.edu.br</strong>.
             </Text>
           </Box>
 
@@ -133,7 +134,7 @@ export default function Form() {
           <FormControl isInvalid={!!errors.phone}>
             <FormLabel fontWeight="bold" color="gray.700">WhatsApp</FormLabel>
             <Text color="gray.700" mb={3} textAlign='justify'>
-              Informe o número de WhatsApp para eventual contato, <strong>preferencialmente de um responsável</strong>.
+              Informe o número de WhatsApp para contato.
             </Text>
             <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="(00) 00000-0000" maxLength={15} focusBorderColor="greenOlympics.500" />
             <FormErrorMessage>{errors.phone}</FormErrorMessage>
@@ -142,8 +143,7 @@ export default function Form() {
           <FormControl  isInvalid={!!errors.email}>
             <FormLabel fontWeight="bold" color="gray.700">E-mail</FormLabel>
             <Text color="gray.700" mb={3} textAlign='justify'>
-              Informe um e-mail para eventual contato, <strong>preferencialmente de um responsável</strong>.
-            </Text>
+              Informe o e-mail para contato.            </Text>
             <Input name="email" value={formData.email} onChange={handleChange} placeholder="seu.email@exemplo.com" focusBorderColor="greenOlympics.500" />
             <FormErrorMessage>{errors.email}</FormErrorMessage>
           </FormControl>
