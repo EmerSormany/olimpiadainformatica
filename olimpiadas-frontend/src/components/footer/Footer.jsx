@@ -21,10 +21,7 @@ export default function Footer() {
               Instituição
             </Heading>
             <Text fontSize="sm" color="gray.300">
-              Instituto Federal de Educação, Ciência e Tecnologia da Paraíba
-            </Text>
-            <Text fontSize="sm" color="gray.300">
-              Coordenação do Curso Superior de Tecnologia em Sistemas para Internet
+              Instituto Federal de Educação, Ciência e Tecnologia da Paraíba - IFPB
             </Text>
             <Text fontSize="sm" color="gray.300">
               PB-177, s/n, Picuí - PB, 58187-000
@@ -42,16 +39,19 @@ export default function Footer() {
 
           <Stack spacing={2}>
             <Heading as="h4" size="md" color="greenOlympics.300">
-              Coordenador
+              Coordenação
             </Heading>
             <Text fontSize="sm" color="gray.300">
               Prof. Antonio Carlos Buriti da Costa Filho
             </Text>
             <Text fontSize="sm" color="gray.300">
-              Mestre em Engenharia Elétrica, coordenador do curso de TSI e coordenador do projeto de extensão das Olimpíadas.
+              Curso Superior de Tecnologia em Sistemas para Internet do IFPB – Campus Picuí
             </Text>
-            <Text fontSize="sm" color="greenOlympics.300" as="a" href="mailto:ifpbopi@gmail.com">
-              ifpbopi@gmail.com
+            <Text fontSize="sm" color="greenOlympics.300" as="a" href="mailto:opi.pc@ifpb.edu.br">
+              opi.pc@ifpb.edu.br
+            </Text>
+            <Text fontSize="sm" color="greenOlympics.300" as="a" href="https://www.instagram.com/opi.ifpb" target="_blank" rel="noopener noreferrer">
+              @opi.ifpb
             </Text>
           </Stack>
         </SimpleGrid>

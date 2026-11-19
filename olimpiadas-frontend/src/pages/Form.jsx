@@ -80,7 +80,7 @@ export default function Form() {
             </Heading>
             <Text color="gray.600">
               Preencha o formulário abaixo para garantir sua participação. <br />
-              Caso sua escola não esteja na lista, entre em contato conosco no email <strong>opi.pc@ifpb.edu.br</strong>.
+              Caso sua escola não esteja na lista, entre em contato conosco no email <strong><a href="mailto:opi.pc@ifpb.edu.br">opi.pc@ifpb.edu.br</a></strong>.
             </Text>
           </Box>
 
